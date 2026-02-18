@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
-import profilePic from './assets/image.png';
 import {
   Github, Linkedin, Mail, Phone, ExternalLink,
-  Moon, Sun, MapPin, Menu, X
+  Moon, Sun, MapPin, Menu, X, Code2
 } from 'lucide-react';
+
+import profilePic from './assets/image.png';
+import projectImg1 from './assets/project1.png';
+import projectImg2 from './assets/project2.png';
+import projectImg3 from './assets/project3.png';
 
 // --- 1. PORTFOLIO DATA ---
 const portfolioData = {
@@ -12,7 +16,6 @@ const portfolioData = {
     name: "Rahul Kumar",
     title: "Full Stack Developer (MCA Student)",
     email: "rahulkumarkuro9@gmail.com",
-    phone: "+91 7549306583",
     location: "Chandigarh, Punjab",
     photoUrl: profilePic
   },
@@ -57,6 +60,7 @@ const portfolioData = {
   projects: [
     {
       title: "Subscription Manager",
+      image: projectImg1,
       date: "Jan 2026",
       tech: ["Node.js", "Security", "OTP"],
       desc: "Secure web app for managing subscriptions. Features include OTP-based secure login and automated renewal reminders.",
@@ -65,6 +69,7 @@ const portfolioData = {
     },
     {
       title: "Student Management System",
+      image: projectImg2,
       date: "Mar 2025",
       tech: ["Node.js", "MongoDB", "CRUD"],
       desc: "Full-stack system with student registration, login, and data persistence using MongoDB.",
@@ -73,6 +78,7 @@ const portfolioData = {
     },
     {
       title: "Library Management System",
+      image: projectImg3,
       date: "Oct 2024",
       tech: ["HTML/CSS", "JS", "Netlify"],
       desc: "Responsive web app with role-based access control. Deployed for public access.",
@@ -83,11 +89,12 @@ const portfolioData = {
 };
 
 // --- 2. ANIMATION VARIANTS ---
+// Updated: Removed 'hidden' state persistence issues
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 }
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 }
   }
 };
 
@@ -101,7 +108,6 @@ const itemVariants = {
 };
 
 // --- 3. COMPONENTS ---
-
 const Navbar = ({ darkMode, toggleTheme }) => {
   const [isOpen, setIsOpen] = useState(false);
   const navLinks = ['About', 'Skills', 'Projects', 'Education', 'Contact'];
@@ -110,15 +116,19 @@ const Navbar = ({ darkMode, toggleTheme }) => {
     <nav className={`fixed w-full z-40 transition-all duration-300 ${darkMode ? 'bg-slate-900/80 border-slate-800' : 'bg-white/80 border-slate-200'} backdrop-blur-md border-b`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <motion.span
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            whileHover={{ rotate: 360, scale: 1.1 }}
+            transition={{ duration: 0.5 }}
+            className={`flex items-center gap-2 cursor-pointer font-bold text-xl ${darkMode ? 'text-white' : 'text-slate-900'}`}
           >
-            Rahul.Dev
-          </motion.span>
+            <div className={`p-2 rounded-lg ${darkMode ? 'bg-blue-600 text-white' : 'bg-blue-600 text-white'}`}>
+              <Code2 size={24} />
+            </div>
+            <span className="hidden sm:block font-mono">&lt;R/&gt;</span>
+          </motion.div>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((item, i) => (
               <motion.a
@@ -142,7 +152,6 @@ const Navbar = ({ darkMode, toggleTheme }) => {
             </motion.button>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-4">
             <button onClick={toggleTheme} className={darkMode ? 'text-yellow-400' : 'text-slate-800'}>
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
@@ -154,7 +163,6 @@ const Navbar = ({ darkMode, toggleTheme }) => {
         </div>
       </div>
 
-      {/* Mobile Dropdown */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -179,7 +187,6 @@ const Navbar = ({ darkMode, toggleTheme }) => {
 
 const Hero = ({ darkMode }) => (
   <section id="about" className="min-h-screen flex items-center pt-20 px-4 relative overflow-hidden">
-    {/* Animated Background Blobs */}
     <motion.div
       animate={{ x: [0, 100, 0], y: [0, -50, 0] }}
       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -193,24 +200,25 @@ const Hero = ({ darkMode }) => (
 
     <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
       <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: false, amount: 0.3 }} // REPEATS ANIMATION
+        transition={{ duration: 0.6 }}
         className="order-2 md:order-1"
       >
-        <motion.div variants={itemVariants} className={`inline-block px-4 py-1 rounded-full text-sm font-medium mb-4 ${darkMode ? 'bg-blue-500/10 text-blue-300' : 'bg-blue-100 text-blue-800'}`}>
+        <div className={`inline-block px-4 py-1 rounded-full text-sm font-medium mb-4 ${darkMode ? 'bg-blue-500/10 text-blue-300' : 'bg-blue-100 text-blue-800'}`}>
           Available for Hire
-        </motion.div>
-        <motion.h1 variants={itemVariants} className={`text-4xl md:text-6xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+        </div>
+        <h1 className={`text-4xl md:text-6xl font-bold mb-6 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
           Hi, I'm <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">{portfolioData.personal.name}</span>
-        </motion.h1>
-        <motion.h2 variants={itemVariants} className={`text-xl md:text-2xl font-light mb-6 ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
+        </h1>
+        <h2 className={`text-xl md:text-2xl font-light mb-6 ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>
           {portfolioData.personal.title}
-        </motion.h2>
-        <motion.p variants={itemVariants} className={`text-base md:text-lg mb-8 leading-relaxed max-w-lg ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+        </h2>
+        <p className={`text-base md:text-lg mb-8 leading-relaxed max-w-lg ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
           {portfolioData.about}
-        </motion.p>
-        <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
+        </p>
+        <div className="flex flex-wrap gap-4">
           <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -234,12 +242,13 @@ const Hero = ({ darkMode }) => (
               </motion.a>
             ))}
           </div>
-        </motion.div>
+        </div>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: false }} // REPEATS ANIMATION
         transition={{ duration: 0.8 }}
         className="order-1 md:order-2 flex justify-center relative"
       >
@@ -262,7 +271,7 @@ const Skills = ({ darkMode }) => (
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false }} // REPEATS ANIMATION
         className={`text-3xl md:text-4xl font-bold mb-16 text-center ${darkMode ? 'text-white' : 'text-slate-900'}`}
       >
         Technical Arsenal
@@ -274,7 +283,7 @@ const Skills = ({ darkMode }) => (
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
+            viewport={{ once: false, amount: 0.2 }} // REPEATS ANIMATION
             className={`p-6 rounded-2xl ${darkMode ? 'glass-dark hover:bg-slate-800/80' : 'glass hover:bg-white/80'} transition-colors duration-300`}
           >
             <h3 className={`text-xl font-bold mb-4 ${darkMode ? 'text-blue-400' : 'text-blue-600'}`}>{skillGroup.category}</h3>
@@ -300,18 +309,33 @@ const Skills = ({ darkMode }) => (
 const Projects = ({ darkMode }) => (
   <section id="projects" className="py-20 px-4">
     <div className="max-w-7xl mx-auto">
-      <h2 className={`text-3xl md:text-4xl font-bold mb-16 text-center ${darkMode ? 'text-white' : 'text-slate-900'}`}>Featured Projects</h2>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        className={`text-3xl md:text-4xl font-bold mb-16 text-center ${darkMode ? 'text-white' : 'text-slate-900'}`}
+      >
+        Featured Projects
+      </motion.h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {portfolioData.projects.map((project, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            whileHover={{ y: -10 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.2 }} // REPEATS ANIMATION
             transition={{ delay: index * 0.1 }}
-            className={`flex flex-col h-full rounded-2xl overflow-hidden border ${darkMode ? 'bg-slate-900/40 border-slate-700 hover:border-blue-500/50' : 'bg-white border-slate-100 shadow-lg hover:shadow-xl'} transition-all`}
+            className={`flex flex-col h-full rounded-2xl overflow-hidden border ${darkMode ? 'bg-slate-900/40 border-slate-700 hover:border-blue-500/50' : 'bg-white border-slate-100 shadow-lg hover:shadow-xl'} transition-all group`}
           >
+            <div className="h-48 overflow-hidden relative bg-gray-200">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </div>
+
             <div className="p-6 flex-1 flex flex-col">
               <div className="flex justify-between items-start mb-4">
                 <h3 className={`text-xl font-bold ${darkMode ? 'text-white' : 'text-slate-900'}`}>{project.title}</h3>
@@ -342,21 +366,28 @@ const Projects = ({ darkMode }) => (
 const Education = ({ darkMode }) => (
   <section id="education" className={`py-20 px-4 ${darkMode ? 'bg-slate-900/30' : 'bg-slate-50/50'}`}>
     <div className="max-w-4xl mx-auto">
-      <h2 className={`text-3xl md:text-4xl font-bold mb-16 text-center ${darkMode ? 'text-white' : 'text-slate-900'}`}>Education</h2>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        className={`text-3xl md:text-4xl font-bold mb-16 text-center ${darkMode ? 'text-white' : 'text-slate-900'}`}
+      >
+        Education
+      </motion.h2>
       <div className="space-y-8">
         {portfolioData.education.map((edu, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.3 }} // REPEATS ANIMATION
             transition={{ delay: index * 0.2 }}
             className={`relative pl-8 border-l-2 ${darkMode ? 'border-slate-700' : 'border-slate-200'}`}
           >
             <motion.div
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               className={`absolute -left-[9px] top-0 w-4 h-4 rounded-full ${darkMode ? 'bg-blue-500' : 'bg-blue-600'}`}
             ></motion.div>
             <div className={`p-6 rounded-xl border hover:shadow-lg transition-shadow ${darkMode ? 'bg-slate-900/60 border-slate-700' : 'bg-white border-slate-100 shadow-sm'}`}>
@@ -381,6 +412,7 @@ const Contact = ({ darkMode }) => (
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: false }}
         whileHover={{ scale: 1.02 }}
         className={`p-8 md:p-12 rounded-3xl text-center border overflow-hidden relative ${darkMode ? 'glass-dark' : 'glass'}`}
       >
@@ -389,7 +421,11 @@ const Contact = ({ darkMode }) => (
         <p className={`mb-10 max-w-lg mx-auto ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
           I am currently looking for opportunities. If you have a project in mind or just want to say hi, feel free to reach out!
         </p>
-        <div className="grid md:grid-cols-3 gap-6">
+
+        {/* UPDATED GRID: Changed back to grid-cols-3 to fit LinkedIn */}
+        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+
+          {/* 1. EMAIL */}
           <motion.a
             whileHover={{ y: -5 }}
             href={`mailto:${portfolioData.personal.email}`}
@@ -398,14 +434,20 @@ const Contact = ({ darkMode }) => (
             <div className="p-3 rounded-full bg-blue-100 text-blue-600 mb-4"><Mail size={24} /></div>
             <span className={`text-sm break-all ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>{portfolioData.personal.email}</span>
           </motion.a>
+
+          {/* 2. LINKEDIN (NEW) */}
           <motion.a
             whileHover={{ y: -5 }}
-            href={`tel:${portfolioData.personal.phone}`}
+            href={portfolioData.links.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`flex flex-col items-center p-6 rounded-xl transition-colors ${darkMode ? 'bg-slate-800/50 hover:bg-slate-800' : 'bg-white/50 hover:bg-white'}`}
           >
-            <div className="p-3 rounded-full bg-green-100 text-green-600 mb-4"><Phone size={24} /></div>
-            <span className={`text-sm ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>{portfolioData.personal.phone}</span>
+            <div className="p-3 rounded-full bg-blue-100 text-blue-600 mb-4"><Linkedin size={24} /></div>
+            <span className={`text-sm ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>Connect on LinkedIn</span>
           </motion.a>
+
+          {/* 3. LOCATION */}
           <motion.div
             whileHover={{ y: -5 }}
             className={`flex flex-col items-center p-6 rounded-xl ${darkMode ? 'bg-slate-800/50' : 'bg-white/50'}`}
@@ -430,7 +472,6 @@ function App() {
   });
 
   const toggleTheme = () => setDarkMode(!darkMode);
-
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add('dark');
@@ -441,7 +482,6 @@ function App() {
 
   return (
     <div className={`min-h-screen transition-colors duration-300 ${darkMode ? 'bg-slate-950 text-slate-200' : 'bg-slate-50 text-slate-800'}`}>
-      {/* SCROLL PROGRESS BAR */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-purple-600 origin-left z-50"
         style={{ scaleX }}
