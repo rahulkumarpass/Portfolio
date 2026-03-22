@@ -116,7 +116,7 @@ const Hero = ({ darkMode, data }) => {
         <section
             ref={sectionRef}
             id="about"
-            className="min-h-[100dvh] flex items-center pt-24 pb-16 px-5 sm:px-8 relative overflow-hidden"
+            className="min-h-[100dvh] flex items-center pt-24 pb-20 px-5 sm:px-8 relative overflow-hidden"
         >
             {/* Mesh BG */}
             <div className="absolute inset-0 mesh-bg" />
@@ -149,7 +149,7 @@ const Hero = ({ darkMode, data }) => {
                 {/* Text Content */}
                 <motion.div
                     style={{ y: textY }}
-                    className="order-2 md:order-1"
+                    className="order-2 md:order-1 text-center md:text-left"
                 >
                     {/* Status badge */}
                     <motion.div
@@ -204,7 +204,7 @@ const Hero = ({ darkMode, data }) => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.7 }}
-                        className={`text-xs font-medium mb-6 tracking-[0.15em] uppercase ${darkMode ? 'text-gray-600' : 'text-gray-400'}`}
+                        className={`text-xs font-medium mb-6 tracking-[0.15em] uppercase ${darkMode ? 'text-gray-600' : 'text-slate-500'}`}
                     >
                         {data.personal.subtitle}
                     </motion.p>
@@ -214,14 +214,14 @@ const Hero = ({ darkMode, data }) => {
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: 1 }}
                         transition={{ delay: 0.75, duration: 0.6 }}
-                        className={`w-12 h-px mb-6 origin-left ${darkMode ? 'bg-white/[0.06]' : 'bg-gray-200'}`}
+                        className={`w-16 h-px mb-8 origin-left mx-auto md:mx-0 ${darkMode ? 'bg-gradient-to-r from-white/10 to-transparent' : 'bg-gradient-to-r from-slate-300 to-transparent'}`}
                     />
 
                     <motion.p
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.8, duration: 0.6 }}
-                        className={`text-[0.9rem] lg:text-[0.95rem] mb-10 leading-[1.8] max-w-md ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}
+                        className={`text-[0.9rem] lg:text-[0.95rem] mb-10 leading-[1.8] max-w-md ${darkMode ? 'text-gray-400' : 'text-slate-600'}`}
                     >
                         {data.about}
                     </motion.p>
@@ -231,7 +231,7 @@ const Hero = ({ darkMode, data }) => {
                         initial={{ opacity: 0, y: 15 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.9, duration: 0.6 }}
-                        className="flex flex-wrap gap-4 items-center"
+                        className="flex flex-wrap gap-4 items-center justify-center md:justify-start"
                     >
                         <div
                             ref={hireMeMagnetic.ref}
@@ -260,7 +260,7 @@ const Hero = ({ darkMode, data }) => {
                                 download
                                 className={`btn-secondary inline-flex items-center gap-2 border group ${darkMode
                                     ? 'border-white/[0.08] text-gray-300 hover:bg-white/[0.03] hover:border-white/[0.15]'
-                                    : 'border-gray-200 text-gray-600 hover:bg-gray-50 hover:border-gray-300'
+                                    : 'border-slate-200 text-slate-700 hover:bg-white hover:border-slate-300 shadow-sm'
                                     }`}
                             >
                                 <Download size={16} className="group-hover:-translate-y-0.5 transition-transform duration-300" />
@@ -274,9 +274,9 @@ const Hero = ({ darkMode, data }) => {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1.1 }}
-                        className="flex items-center gap-3 mt-10"
+                        className="flex items-center gap-3 mt-10 justify-center md:justify-start"
                     >
-                        <span className={`text-[0.65rem] font-medium mr-1 tracking-[0.12em] uppercase ${darkMode ? 'text-gray-600' : 'text-gray-400'}`}>
+                        <span className={`text-[0.65rem] font-medium mr-1 tracking-[0.12em] uppercase ${darkMode ? 'text-gray-600' : 'text-slate-400'}`}>
                             Find me
                         </span>
                         <div className={`w-px h-4 ${darkMode ? 'bg-white/[0.06]' : 'bg-gray-200'}`} />
@@ -295,7 +295,7 @@ const Hero = ({ darkMode, data }) => {
                                 title={social.label}
                                 className={`p-2.5 rounded-xl transition-all duration-400 ${darkMode
                                     ? 'text-gray-600 hover:text-indigo-400 hover:bg-white/[0.04] active:scale-90'
-                                    : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 active:scale-90'
+                                    : 'text-slate-500 hover:text-indigo-600 hover:bg-indigo-50/80 active:scale-90'
                                     }`}
                             >
                                 {social.icon}

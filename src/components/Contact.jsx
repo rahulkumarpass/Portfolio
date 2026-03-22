@@ -77,7 +77,7 @@ const Contact = ({ darkMode, data }) => (
                                 <Sparkles size={24} className={darkMode ? 'text-indigo-400/80' : 'text-indigo-600'} />
                             </div>
                         </motion.div>
-                        <p className={`max-w-md mx-auto text-sm leading-relaxed ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
+                        <p className={`max-w-md mx-auto text-sm leading-relaxed ${darkMode ? 'text-gray-500' : 'text-slate-500'}`}>
                             I'm currently seeking new opportunities. If you have a project or just want to say hi, feel free to reach out!
                         </p>
                     </div>
@@ -98,21 +98,22 @@ const Contact = ({ darkMode, data }) => (
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: 0.1 + i * 0.08, duration: 0.5 }}
+                                    whileHover={{ y: -4 }}
                                 >
                                     <Wrapper
                                         {...linkProps}
-                                        className={`flex flex-col items-center p-5 rounded-2xl border transition-all duration-400 group cursor-pointer ${darkMode
+                                        className={`flex flex-col items-center p-4 sm:p-5 rounded-2xl border transition-all duration-400 group cursor-pointer ${darkMode
                                             ? `bg-white/[0.02] border-white/[0.04] ${item.hoverBorder} hover:bg-white/[0.04]`
-                                            : `bg-white border-gray-100 hover:border-gray-200 hover:shadow-lg hover:shadow-gray-100/50`
+                                            : `bg-white border-slate-200 hover:border-slate-300 hover:shadow-lg hover:shadow-slate-100/80`
                                             }`}
                                     >
-                                        <div className={`p-2.5 rounded-xl bg-gradient-to-br ${item.gradient} text-white mb-3 shadow-lg ${item.glowColor} transition-shadow duration-400`}>
+                                        <div className={`p-2.5 rounded-xl bg-gradient-to-br ${item.gradient} text-white mb-3 shadow-lg ${item.glowColor} transition-all duration-400 group-hover:scale-110`}>
                                             {item.icon}
                                         </div>
-                                        <span className={`text-[0.65rem] font-medium uppercase tracking-[0.12em] ${darkMode ? 'text-gray-600' : 'text-gray-400'}`}>
+                                        <span className={`text-[0.65rem] font-medium uppercase tracking-[0.12em] ${darkMode ? 'text-gray-600' : 'text-slate-400'}`}>
                                             {item.label}
                                         </span>
-                                        <span className={`text-sm font-medium mt-1 text-center ${item.label === 'Email' ? 'break-all' : ''} ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                                        <span className={`text-sm font-medium mt-1 text-center ${item.label === 'Email' ? 'break-all' : ''} ${darkMode ? 'text-gray-300' : 'text-slate-700'}`}>
                                             {item.value}
                                         </span>
                                     </Wrapper>

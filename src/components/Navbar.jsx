@@ -35,11 +35,11 @@ const Navbar = ({ darkMode, toggleTheme }) => {
       <nav className={`fixed w-full z-40 transition-all duration-700 ${scrolled
         ? darkMode
           ? 'bg-gray-950/70 backdrop-blur-2xl border-b border-white/[0.04] shadow-[0_1px_20px_rgba(0,0,0,0.3)]'
-          : 'bg-white/70 backdrop-blur-2xl border-b border-gray-200/40 shadow-[0_1px_20px_rgba(0,0,0,0.06)]'
+          : 'bg-white/80 backdrop-blur-2xl border-b border-slate-200/60 shadow-[0_4px_20px_rgba(0,0,0,0.06)]'
         : 'bg-transparent border-b border-transparent'
         }`}>
         <div className="max-w-6xl mx-auto px-5 sm:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-[4.5rem]">
             {/* Logo */}
             <motion.a
               href="#about"
@@ -69,11 +69,11 @@ const Navbar = ({ darkMode, toggleTheme }) => {
                     transition={{ delay: 0.1 + i * 0.06, duration: 0.5 }}
                     className={`relative px-4 py-2 text-[0.82rem] font-medium rounded-lg transition-all duration-400 ${isActive
                       ? darkMode
-                        ? 'text-white'
-                        : 'text-gray-900'
+                        ? 'text-white bg-white/[0.06]'
+                        : 'text-slate-900 bg-slate-100/80'
                       : darkMode
                         ? 'text-gray-500 hover:text-gray-300 hover:bg-white/[0.03]'
-                        : 'text-gray-400 hover:text-gray-700 hover:bg-gray-50'
+                        : 'text-slate-500 hover:text-slate-900 hover:bg-slate-50'
                       }`}
                   >
                     {item}
@@ -142,7 +142,7 @@ const Navbar = ({ darkMode, toggleTheme }) => {
               transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
               className={`fixed top-0 right-0 bottom-0 w-72 z-50 md:hidden flex flex-col ${darkMode
                 ? 'bg-gray-950/95 backdrop-blur-2xl border-l border-white/[0.04]'
-                : 'bg-white/95 backdrop-blur-2xl border-l border-gray-200/50'
+                : 'bg-white backdrop-blur-2xl border-l border-slate-200 shadow-[-8px_0_30px_rgba(0,0,0,0.08)]'
                 }`}
             >
               <div className="flex justify-end p-4">
@@ -170,7 +170,7 @@ const Navbar = ({ darkMode, toggleTheme }) => {
                           : 'text-indigo-600 bg-indigo-50'
                         : darkMode
                           ? 'text-gray-400 hover:text-white hover:bg-white/[0.03]'
-                          : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+                          : 'text-slate-500 hover:text-slate-900 hover:bg-slate-50'
                         }`}
                     >
                       {item}

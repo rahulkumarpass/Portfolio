@@ -14,7 +14,7 @@ const SectionHeading = ({ children, darkMode, subtitle }) => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.5 }}
-            className="text-xs font-medium uppercase tracking-[0.2em] text-indigo-400/80 mb-4"
+            className={`text-xs font-medium uppercase tracking-[0.2em] mb-4 ${darkMode ? 'text-indigo-400/80' : 'text-indigo-500'}`}
         >
             {subtitle}
         </motion.p>
@@ -26,7 +26,7 @@ const SectionHeading = ({ children, darkMode, subtitle }) => (
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-            className="mt-5 mx-auto w-12 h-[2px] rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 origin-center"
+            className="mt-5 mx-auto w-16 h-[2px] rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 origin-center"
         />
     </motion.div>
 );

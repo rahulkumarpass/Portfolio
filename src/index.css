@@ -86,19 +86,23 @@ body {
   }
 
   .glass-card-light {
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(24px) saturate(1.2);
-    -webkit-backdrop-filter: blur(24px) saturate(1.2);
-    border: 1px solid rgba(226, 232, 240, 0.7);
-    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.04),
+      0 4px 12px rgba(0, 0, 0, 0.03);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .glass-card-light:hover {
-    background: rgba(255, 255, 255, 0.8);
-    border-color: rgba(99, 102, 241, 0.2);
+    background: #ffffff;
+    border-color: #cbd5e1;
+    transform: translateY(-4px);
     box-shadow:
-      0 0 0 1px rgba(99, 102, 241, 0.04),
-      0 8px 40px rgba(0, 0, 0, 0.06);
+      0 8px 30px rgba(0, 0, 0, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04),
+      0 0 0 1px rgba(99, 102, 241, 0.04);
   }
 
   /* ── Neon Glow ── */
@@ -139,6 +143,7 @@ body {
     background-size: 300% 300%;
     animation: gradient-shift 5s ease infinite;
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     pointer-events: none;
@@ -206,6 +211,25 @@ body {
 
   .btn-secondary:active {
     transform: scale(0.97);
+  }
+
+  /* ── Light-mode specific enhancements ── */
+  .light-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.04),
+      0 4px 12px rgba(0, 0, 0, 0.03);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .light-card:hover {
+    border-color: #cbd5e1;
+    transform: translateY(-3px);
+    box-shadow:
+      0 8px 30px rgba(0, 0, 0, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04);
   }
 }
 
@@ -299,6 +323,20 @@ body {
   animation: orbit 20s linear infinite;
 }
 
+/* ── Section scroll reveal ── */
+@keyframes slide-up-blur {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
 /* ===== BACKGROUND PATTERNS ===== */
 .mesh-bg {
   background-image:
@@ -326,6 +364,12 @@ body {
 ::selection {
   background: rgba(99, 102, 241, 0.25);
   color: #e0e7ff;
+}
+
+/* Light mode selection */
+:root:not(.dark) ::selection {
+  background: rgba(99, 102, 241, 0.15);
+  color: #1e293b;
 }
 
 /* ===== FOCUS ===== */
@@ -424,6 +468,11 @@ body {
 .section-divider {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.12), transparent);
+}
+
+.section-divider-light {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.3), transparent);
 }
 
 /* ===== FLOATING PARTICLES ===== */

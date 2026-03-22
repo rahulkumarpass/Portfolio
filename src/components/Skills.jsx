@@ -28,7 +28,7 @@ const ProgressBar = ({ value, delay = 0 }) => {
 };
 
 const Skills = ({ darkMode, data }) => (
-    <section id="skills" className={`py-24 px-5 sm:px-8 relative ${darkMode ? '' : 'bg-gray-50/60'}`}>
+    <section id="skills" className={`py-24 px-5 sm:px-8 relative ${darkMode ? '' : 'bg-[#f1f5f9]'}`}>
         <div className="absolute inset-0 dot-pattern opacity-30 pointer-events-none" />
         <div className="max-w-6xl mx-auto relative z-10">
             <SectionHeading darkMode={darkMode} subtitle="Technologies & tools">
@@ -44,7 +44,7 @@ const Skills = ({ darkMode, data }) => (
                         viewport={{ once: true, amount: 0.15 }}
                         transition={{ delay: groupIndex * 0.1, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
                         whileHover={{ y: -5 }}
-                        className={`group relative p-6 rounded-2xl overflow-hidden ${darkMode
+                        className={`group relative p-5 sm:p-6 rounded-2xl overflow-hidden ${darkMode
                             ? 'glass-card'
                             : 'glass-card-light'
                             }`}
@@ -60,7 +60,7 @@ const Skills = ({ darkMode, data }) => (
                             <div className="flex items-center gap-3 mb-6">
                                 <div className={`p-2.5 rounded-xl transition-all duration-500 group-hover:scale-110 ${darkMode
                                     ? 'bg-indigo-500/[0.08] text-indigo-400/90 group-hover:bg-indigo-500/[0.12] group-hover:shadow-lg group-hover:shadow-indigo-500/10'
-                                    : 'bg-indigo-50 text-indigo-600 group-hover:bg-indigo-100'
+                                    : 'bg-indigo-50 text-indigo-600 group-hover:bg-indigo-100 group-hover:shadow-md group-hover:shadow-indigo-200/50'
                                     }`}>
                                     {skillGroup.icon}
                                 </div>
@@ -76,10 +76,10 @@ const Skills = ({ darkMode, data }) => (
                                     return (
                                         <div key={skill}>
                                             <div className="flex justify-between items-center">
-                                                <span className={`text-[0.8rem] font-medium ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                                                <span className={`text-[0.8rem] font-medium ${darkMode ? 'text-gray-400' : 'text-slate-600'}`}>
                                                     {skill}
                                                 </span>
-                                                <span className={`text-[0.65rem] font-mono tabular-nums ${darkMode ? 'text-gray-600' : 'text-gray-400'}`}>
+                                                <span className={`text-[0.65rem] font-mono tabular-nums ${darkMode ? 'text-gray-600' : 'text-slate-500'}`}>
                                                     {proficiency}%
                                                 </span>
                                             </div>

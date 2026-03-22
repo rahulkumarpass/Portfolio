@@ -137,10 +137,10 @@ function useCursorGlow(enabled) {
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 const SectionWrapper = ({ children, className = '', delay = 0 }) => (
   <motion.div
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    viewport={{ once: true, margin: "-80px" }}
-    transition={{ duration: 0.7, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+    initial={{ opacity: 0, y: 30, filter: 'blur(6px)' }}
+    whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+    viewport={{ once: true, margin: "-60px" }}
+    transition={{ duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
     className={className}
   >
     {children}
@@ -167,7 +167,7 @@ function App() {
   }, [darkMode]);
 
   return (
-    <div className={`min-h-screen transition-colors duration-700 relative ${darkMode ? 'bg-gray-950 text-gray-200' : 'bg-white text-gray-800'}`}>
+    <div className={`min-h-screen transition-colors duration-700 relative ${darkMode ? 'bg-gray-950 text-gray-200' : 'bg-[#f8fafc] text-slate-800'}`}>
       {/* Cursor glow (dark mode only) */}
       {darkMode && <div ref={cursorRef} className="cursor-glow hidden lg:block" />}
 
@@ -185,31 +185,31 @@ function App() {
       <main className="relative z-10">
         <Hero darkMode={darkMode} data={portfolioData} />
 
-        <div className="section-divider max-w-5xl mx-auto" />
+        <div className={`${darkMode ? 'section-divider' : 'section-divider-light'} max-w-5xl mx-auto`} />
 
         <SectionWrapper>
           <Stats darkMode={darkMode} data={portfolioData} />
         </SectionWrapper>
 
-        <div className="section-divider max-w-5xl mx-auto" />
+        <div className={`${darkMode ? 'section-divider' : 'section-divider-light'} max-w-5xl mx-auto`} />
 
         <SectionWrapper>
           <Skills darkMode={darkMode} data={portfolioData} />
         </SectionWrapper>
 
-        <div className="section-divider max-w-5xl mx-auto" />
+        <div className={`${darkMode ? 'section-divider' : 'section-divider-light'} max-w-5xl mx-auto`} />
 
         <SectionWrapper>
           <Projects darkMode={darkMode} data={portfolioData} />
         </SectionWrapper>
 
-        <div className="section-divider max-w-5xl mx-auto" />
+        <div className={`${darkMode ? 'section-divider' : 'section-divider-light'} max-w-5xl mx-auto`} />
 
         <SectionWrapper>
           <Education darkMode={darkMode} data={portfolioData} />
         </SectionWrapper>
 
-        <div className="section-divider max-w-5xl mx-auto" />
+        <div className={`${darkMode ? 'section-divider' : 'section-divider-light'} max-w-5xl mx-auto`} />
 
         <SectionWrapper>
           <Contact darkMode={darkMode} data={portfolioData} />

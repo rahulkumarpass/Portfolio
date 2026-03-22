@@ -36,7 +36,7 @@ const StatItem = ({ stat, darkMode, index }) => {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ delay: index * 0.1, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
             whileHover={{ y: -5, scale: 1.03 }}
-            className={`relative text-center p-7 rounded-2xl transition-all duration-500 group ${darkMode
+            className={`relative text-center p-5 sm:p-7 rounded-2xl transition-all duration-500 group ${darkMode
                 ? 'glass-card'
                 : 'glass-card-light'
                 }`}
@@ -49,7 +49,7 @@ const StatItem = ({ stat, darkMode, index }) => {
             <div className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold gradient-text mb-1 tracking-tight">
                 {count}{stat.suffix}
             </div>
-            <div className={`text-[0.7rem] font-medium tracking-[0.12em] uppercase ${darkMode ? 'text-gray-500' : 'text-gray-400'}`}>
+            <div className={`text-[0.7rem] font-medium tracking-[0.12em] uppercase ${darkMode ? 'text-gray-500' : 'text-slate-500'}`}>
                 {stat.label}
             </div>
         </motion.div>
@@ -57,8 +57,8 @@ const StatItem = ({ stat, darkMode, index }) => {
 };
 
 const Stats = ({ darkMode, data }) => (
-    <section className="py-20 px-5 sm:px-8">
-        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+    <section className="py-24 px-5 sm:px-8">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
             {data.stats.map((stat, index) => (
                 <StatItem key={index} stat={stat} darkMode={darkMode} index={index} />
             ))}

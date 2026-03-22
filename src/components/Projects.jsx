@@ -53,8 +53,10 @@ const ProjectCard = ({ project, index, darkMode }) => {
                 onMouseMove={useTiltEffect ? tilt.onMouseMove : undefined}
                 onMouseLeave={useTiltEffect ? tilt.onMouseLeave : undefined}
                 style={useTiltEffect ? { transform: tilt.transform, transition: 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)' } : undefined}
-                className={`group flex flex-col h-full rounded-2xl overflow-hidden ${darkMode ? 'glass-card' : 'glass-card-light'}`}
+                className={`group flex flex-col h-full rounded-2xl overflow-hidden relative ${darkMode ? 'glass-card' : 'glass-card-light'}`}
             >
+                {/* Top gradient accent on hover */}
+                <div className="absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent via-indigo-500/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
                 {/* Image */}
                 <div className="relative h-44 sm:h-48 lg:h-52 overflow-hidden">
                     <img
@@ -105,10 +107,10 @@ const ProjectCard = ({ project, index, darkMode }) => {
                         </h3>
                         <span className={`text-[0.65rem] font-mono px-2 py-1 rounded-md shrink-0 ${darkMode
                             ? 'bg-white/[0.04] text-gray-500'
-                            : 'bg-gray-100 text-gray-400'
+                            : 'bg-slate-100 text-slate-500'
                             }`}>{project.date}</span>
                     </div>
-                    <p className={`text-[0.82rem] mb-5 leading-[1.7] flex-1 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+                    <p className={`text-[0.82rem] mb-5 leading-[1.7] flex-1 ${darkMode ? 'text-gray-400' : 'text-slate-600'}`}>
                         {project.desc}
                     </p>
                     <div className="flex flex-wrap gap-1.5">
@@ -118,7 +120,7 @@ const ProjectCard = ({ project, index, darkMode }) => {
                                 whileHover={{ scale: 1.06 }}
                                 className={`text-[0.7rem] font-medium px-2.5 py-1.5 rounded-md transition-all duration-300 ${darkMode
                                     ? 'bg-indigo-500/[0.07] text-indigo-300/80 border border-indigo-500/[0.1] hover:border-indigo-500/25 hover:text-indigo-300'
-                                    : 'bg-indigo-50 text-indigo-600 border border-indigo-100/80 hover:bg-indigo-100/60'
+                                    : 'bg-indigo-50/80 text-indigo-600 border border-indigo-200/60 hover:bg-indigo-100/60'
                                     }`}>{t}</motion.span>
                         ))}
                     </div>
@@ -135,7 +137,7 @@ const Projects = ({ darkMode, data }) => (
                 Featured Projects
             </SectionHeading>
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
                 {data.projects.map((project, index) => (
                     <ProjectCard key={index} project={project} index={index} darkMode={darkMode} />
                 ))}

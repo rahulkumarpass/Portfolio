@@ -4,7 +4,7 @@ import { GraduationCap } from 'lucide-react';
 import SectionHeading from './SectionHeading';
 
 const Education = ({ darkMode, data }) => (
-    <section id="education" className={`py-24 px-5 sm:px-8 relative ${darkMode ? '' : 'bg-gray-50/60'}`}>
+    <section id="education" className={`py-24 px-5 sm:px-8 relative ${darkMode ? '' : 'bg-[#f1f5f9]'}`}>
         <div className="absolute inset-0 dot-pattern opacity-20 pointer-events-none" />
         <div className="max-w-3xl mx-auto relative z-10">
             <SectionHeading darkMode={darkMode} subtitle="Academic journey">
@@ -15,7 +15,7 @@ const Education = ({ darkMode, data }) => (
                 {/* Timeline line */}
                 <div className="absolute left-[18px] md:left-[22px] top-2 bottom-2 w-px timeline-line" />
 
-                <div className="space-y-10">
+                <div className="space-y-12">
                     {data.education.map((edu, index) => (
                         <motion.div
                             key={index}
@@ -55,7 +55,7 @@ const Education = ({ darkMode, data }) => (
                                     </h3>
                                     <span className={`text-[0.65rem] font-mono px-2 py-1.5 rounded-md whitespace-nowrap ${darkMode
                                         ? 'bg-white/[0.04] text-gray-500'
-                                        : 'bg-gray-100 text-gray-400'
+                                        : 'bg-slate-100 text-slate-500'
                                         }`}>{edu.year}</span>
                                 </div>
                                 <p className={`font-medium text-sm mb-4 flex items-center gap-1.5 ${darkMode ? 'text-indigo-400/80' : 'text-indigo-600'}`}>
