@@ -4,11 +4,11 @@ import SectionHeading from './SectionHeading';
 
 // Skill proficiency data
 const skillProficiency = {
-    "React.js": 90, "Tailwind CSS": 88, "Bootstrap": 82, "HTML5": 95, "CSS3": 92,
-    "JavaScript": 88, "WordPress": 70, "Node.js": 85, "Express": 82, "REST API": 80,
-    "Java": 75, "Python": 72, "C++": 70, "C": 68, "MongoDB": 80, "MySQL": 82,
-    "SQL": 85, "NoSQL": 78, "Git/GitHub": 90, "VS Code": 95, "Postman": 85,
-    "Netlify": 88, "IntelliJ": 75, "Online GDB": 70, "NetBeans": 72
+    "React.js": 75, "Tailwind CSS": 88, "Bootstrap": 82, "HTML5": 95, "CSS3": 92,
+    "JavaScript": 88, "WordPress": 70, "Node.js": 80, "Express": 80, "REST API": 80,
+    "Java": 85, "Python": 72, "C++": 75, "C": 80, "MongoDB": 80, "MySQL": 82,
+    "NoSQL": 78, "Git/GitHub": 90, "VS Code": 95, "Postman": 70,
+    "Netlify": 88, "IntelliJ": 75, "Online GDB": 70, "NetBeans": 70
 };
 
 const ProgressBar = ({ value, delay = 0 }) => {
