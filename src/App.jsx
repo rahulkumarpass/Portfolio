@@ -72,9 +72,9 @@ const portfolioData = {
     }
   ],
   skills: [
-    { category: "Frontend", icon: <Layers size={20} />, items: ["React.js", "Tailwind CSS", "Bootstrap", "HTML5", "CSS3", "JavaScript", "WordPress"] },
+    { category: "Frontend", icon: <Layers size={20} />, items: ["HTML5", "Tailwind CSS", "Bootstrap", "React.js", "CSS3", "JavaScript", "WordPress"] },
     { category: "Backend", icon: <Terminal size={20} />, items: ["Node.js", "Express", "REST API", "Java", "Python", "C++", "C"] },
-    { category: "Database", icon: <Database size={20} />, items: ["MongoDB", "MySQL", "SQL", "NoSQL"] },
+    { category: "Database", icon: <Database size={20} />, items: ["MongoDB", "MySQL", "NoSQL"] },
     { category: "Tools", icon: <Wrench size={20} />, items: ["Git/GitHub", "VS Code", "Postman", "Netlify", "IntelliJ", "Online GDB", "NetBeans"] }
   ],
   projects: [
@@ -86,7 +86,7 @@ const portfolioData = {
       desc: "Secure web app for managing subscriptions with OTP-based authentication and automated renewal reminders.",
       github: "https://github.com/rahulkumarpass/subscription-manager",
       demo: null,
-      status: "In Development"
+      status: "Completed"
     },
     {
       title: "Student Management System",

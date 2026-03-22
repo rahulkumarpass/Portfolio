@@ -6,7 +6,7 @@ import SectionHeading from './SectionHeading';
 const skillProficiency = {
     "React.js": 75, "Tailwind CSS": 88, "Bootstrap": 82, "HTML5": 95, "CSS3": 92,
     "JavaScript": 88, "WordPress": 70, "Node.js": 80, "Express": 80, "REST API": 80,
-    "Java": 85, "Python": 72, "C++": 75, "C": 80, "MongoDB": 80, "MySQL": 82,
+    "Java": 85, "Python": 70, "C++": 75, "C": 80, "MongoDB": 80, "MySQL": 82,
     "NoSQL": 78, "Git/GitHub": 90, "VS Code": 95, "Postman": 70,
     "Netlify": 88, "IntelliJ": 75, "Online GDB": 70, "NetBeans": 70
 };
