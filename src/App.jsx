@@ -105,7 +105,7 @@ const portfolioData = {
       tech: ["HTML/CSS", "JavaScript", "Netlify"],
       desc: "Responsive library app with role-based access control, deployed live on Netlify.",
       github: "https://github.com/rahulkumarpass/Library",
-      demo: "https://genuine-dusk-fef80a.netlify.app",
+      demo: "https://libraryinterface.netlify.app/",
       status: "Live"
     }
   ]
